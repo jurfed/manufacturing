@@ -11,8 +11,6 @@ import ru.jurfed.domain.Manufacturing;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -22,13 +20,10 @@ public class ManufacturingRest {
 
     ScheduledExecutorService service = Executors.newScheduledThreadPool(20);
 
-    @RequestMapping(value = "/manufacture", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-
+    @RequestMapping(value = "/manufacturing", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public void sendPresentToOrder(@RequestBody Manufacturing manufacturing) {
 
-
         service.schedule(new CreatePresents(manufacturing), (int) Math.random() * 2000 + 200, TimeUnit.MILLISECONDS);
-
         System.out.println();
 
     }
