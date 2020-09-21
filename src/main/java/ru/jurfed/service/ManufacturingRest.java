@@ -21,7 +21,7 @@ public class ManufacturingRest {
     ScheduledExecutorService service = Executors.newScheduledThreadPool(20);
 
     @RequestMapping(value = "/manufacturing", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void sendPresentToOrder(@RequestBody Manufacturing manufacturing) {
+    public void getOrder(@RequestBody Manufacturing manufacturing) {
 
         service.schedule(new CreatePresents(manufacturing), (int) Math.random() * 2000 + 200, TimeUnit.MILLISECONDS);
         System.out.println();
